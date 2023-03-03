@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AppController {
 
-	private final MathService server = new MathService();
+	private final MathService service = new MathService();
 
 	@GetMapping("/hi")
 	public String sayHi(@RequestParam(value = "name", defaultValue = "World") String name) {
@@ -15,14 +15,14 @@ public class AppController {
 	}
 
 	@GetMapping("/factorial")
-	public String getFactorial(@RequestParam(value = "number") String number) {
-		long result = 0;
-		return "The result is: " + result;
+	public String getFactorial(@RequestParam(value = "number") int number) {
+		long result = service.factorial(number);
+		return "The result of " + number + "! is: " + result;
 	}
 
 	@GetMapping("/plus")
-	public String getPlus(@RequestParam(value = "a") String a, @RequestParam(value = "b") String b) {
-		long result = 0;
-		return "The result is: " + result;
+	public String getPlus(@RequestParam(value = "a") int a, @RequestParam(value = "b") int b) {
+		long result = service.plus(a,b);
+		return "The result of " + a + " + "+ b + " is: " + result;
 	}
 }
