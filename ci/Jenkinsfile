@@ -1,0 +1,38 @@
+pipeline {
+    agent {
+        docker{
+            image 'gradle:6.3-jdk14'
+            reuseNode true
+        }
+    }
+    stages {
+        stage('Unit Test') {
+            steps {
+                echo 'Unit Test ....'
+                sh './gradlew clean test'
+            }
+        }
+        stage('Code Analisis') {
+            steps {
+                echo 'Code Analisis ....'
+                sh './gradlew sonar'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building ....'
+                sh './gradlew build'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying ....'
+            }
+        }
+        stage('Functional Test') {
+            steps {
+                echo 'Functional Test ....'
+            }
+        }
+    }
+}

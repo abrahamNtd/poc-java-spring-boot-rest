@@ -1,1 +1,3 @@
-rootProject.name = 'rest-service'
+
+rootProject.name = 'poc-java-springboot'
+include('app')

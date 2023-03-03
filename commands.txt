@@ -1,0 +1,3 @@
+./gradlew clean test build
+docker build -t abrahamntd/restapi:latest .
+docker run -name restapi -p 8080:8080 abrahamntd/restapi:latest
