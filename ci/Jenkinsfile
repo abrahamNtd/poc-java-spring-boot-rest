@@ -1,8 +1,7 @@
 pipeline {
     agent {
-        docker{
-            image 'gradle:6.3-jdk14'
-            reuseNode true
+        node{
+            label 'jdk-11'
         }
     }
     stages {
